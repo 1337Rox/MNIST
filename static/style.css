@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Основной контейнер страницы. */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #1a1d23;
+    color: #e6e9ef;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+/* Центральная карточка приложения. */
+.container {
+    width: 100%;
+    max-width: 520px;
+    background: #242830;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Заголовки и описание. */
+h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 20px 0 12px;
+    color: #a8b0bc;
+    font-weight: 500;
+}
+
+.subtitle {
+    color: #a8b0bc;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Область рисования цифры. */
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+canvas {
+    background: #ffffff;
+    border-radius: 12px;
+    cursor: crosshair;
+    touch-action: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Кнопки управления canvas. */
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Общий стиль кнопок. */
+button {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Основная кнопка распознавания. */
+#predict-btn {
+    background: #4f8eff;
+    color: white;
+}
+
+#predict-btn:hover {
+    background: #3d7eef;
+}
+
+/* Вторичная кнопка очистки. */
+button.secondary {
+    background: #3a3f4a;
+    color: #e6e9ef;
+}
+
+button.secondary:hover {
+    background: #444955;
+}
+
+/* Блок с результатом распознавания. */
+.result {
+    background: #1a1d23;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.result-main {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+/* Текст главного предсказания. */
+.result-label {
+    color: #a8b0bc;
+    font-size: 14px;
+}
+
+.result-digit {
+    font-size: 48px;
+    font-weight: 700;
+    color: #4f8eff;
+    line-height: 1;
+}
+
+.result-confidence {
+    color: #a8b0bc;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Список вероятностей для цифр 0-9. */
+.probabilities {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+}
+
+/* Одна строка вероятности: цифра, шкала, процент. */
+.probabilities li {
+    display: grid;
+    grid-template-columns: 24px 1fr 48px;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.prob-digit {
+    font-weight: 600;
+    color: #e6e9ef;
+}
+
+/* Горизонтальная шкала вероятности. */
+.prob-bar {
+    background: #3a3f4a;
+    border-radius: 4px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.prob-bar-fill {
+    background: #4f8eff;
+    height: 100%;
+    transition: width 0.2s;
+}
+
+/* Максимальная вероятность подсвечивается зелёным. */
+.probabilities li.top .prob-bar-fill {
+    background: #5cd97e;
+}
+
+.probabilities li.top .prob-digit {
+    color: #5cd97e;
+}
+
+.prob-value {
+    text-align: right;
+    color: #a8b0bc;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Подсказка и сообщения об ошибках. */
+.hint {
+    color: #6c7280;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.hint.error {
+    color: #ff6b6b;
+}

@@ -1,0 +1,14 @@
+*.bat
+*.rar
+
+__pycache__/
+*.pyc
+*.pyo
+
+.vscode/
+.idea/
+*.swp
+
+venv/
+.venv/
+env/

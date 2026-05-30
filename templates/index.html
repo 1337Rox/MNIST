@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Распознавание рукописных цифр</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <h1>Распознавание рукописных цифр</h1>
+        <p class="subtitle">
+            Нарисуйте цифру от 0 до 9 в квадрате ниже.
+            Нейросеть попробует её угадать.
+        </p>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas" width="280" height="280"></canvas>
+        </div>
+
+        <div class="controls">
+            <button id="predict-btn" type="button">Распознать</button>
+            <button id="clear-btn" type="button" class="secondary">Очистить</button>
+        </div>
+
+        <section class="result" id="result" hidden>
+            <div class="result-main">
+                <span class="result-label">Предсказание:</span>
+                <span class="result-digit" id="result-digit">?</span>
+            </div>
+            <div class="result-confidence" id="result-confidence"></div>
+
+            <h2>Вероятности всех цифр</h2>
+            <ul class="probabilities" id="probabilities"></ul>
+        </section>
+
+        <p class="hint" id="hint">
+            Подсказка: рисуйте крупно, по центру, толстой линией —
+            так нейросети проще распознать цифру.
+        </p>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
